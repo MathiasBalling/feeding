@@ -45,7 +45,7 @@ class MjSim(BaseSim):
 
             ssd = 0.05  # spawn seperation distance, MODIFY IF NEEDED
             part_body = part.worldbody.find("body", "part")
-            part_body.pos = [-0.6 - (i * ssd), -0.04, 0.15]
+            part_body.pos = [0.02, 0.05, 0.17]
 
             # random RPY initializing of the part, MODIFY IF NEEDED
             roll = random.uniform(0, 3.14)
@@ -54,6 +54,7 @@ class MjSim(BaseSim):
 
             # convert to quaternions
             qx, qy, qz, qw = self.getQuaternionFromEuler(roll, pitch, yaw)
+            qx, qy, qz, qw = self.getQuaternionFromEuler(0, 0, 0)
             part_body.quat = [qx, qy, qz, qw]
 
             # attach part to scene
@@ -90,7 +91,7 @@ class MjSim(BaseSim):
 
             dz = vzAmp * np.sin(omega * t)
             dx = vxAmp * np.sin(omega * t)
-            self.data.actuator("feeder/x").ctrl = dx
+            self.data.actuator("feeder/y").ctrl = dx
             self.data.actuator("feeder/z").ctrl = dz
 
             # print(self.data.joint("feeder/x").qpos)
@@ -112,7 +113,7 @@ class MjSim(BaseSim):
             self._runSim = False
             print("You pressed space and can now quit")
         if key is glfw.KEY_R:
-            mj.reset_data(self.model, self.data)
+            mj.mj_resetData(self.model, self.data)
             # pass  # TODO: reset function not yet implemented
 
     def getQuaternionFromEuler(self, roll, pitch, yaw):
