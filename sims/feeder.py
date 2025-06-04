@@ -112,7 +112,8 @@ class MjSim(BaseSim):
             self._runSim = False
             print("You pressed space and can now quit")
         if key is glfw.KEY_R:
-            pass  # TODO: reset function not yet implemented
+            mj.reset_data(self.model, self.data)
+            # pass  # TODO: reset function not yet implemented
 
     def getQuaternionFromEuler(self, roll, pitch, yaw):
         qx = np.sin(roll / 2) * np.cos(pitch / 2) * np.cos(yaw / 2) - np.cos(
