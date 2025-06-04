@@ -81,6 +81,44 @@ class MjSim(BaseSim):
         )  # set time step of the simulation for computation of next vibrations position (handled by controller)
 
         while self._runSim:
+            print(int(self.data.time) % 10)
+            if int(self.data.time * 2) % 2 == 0:
+                print("HER")
+                _MJ_SIM = Path(__file__).parent.parent
+
+                # basic scene path
+                _XML_SCENE = Path(_MJ_SIM / "scenes/empty.xml")
+                scene = mjcf.from_path(_XML_SCENE)
+
+                # path to import feeder
+                _XML_FEEDER = Path(_MJ_SIM / "assets/props/feeder.xml")
+                feeder = mjcf.from_path(_XML_FEEDER)
+                self._feeder = feeder
+
+                # find the feeder body and attach it to the basic scene
+                feeder_body = feeder.worldbody.find("body", "feeder")
+                feeder_body.pos = [0.0, 0, 0.1]  # set position
+                scene.attach(feeder)
+
+                _XML_PART = Path(_MJ_SIM / "assets/props/part.xml")
+                part = mjcf.from_path(_XML_PART)
+
+                part_body = part.worldbody.find("body", "part")
+                part_body.pos = [0.02, 0.05, 0.17]
+
+                # random RPY initializing of the part, MODIFY IF NEEDED
+                roll = random.uniform(0, 3.14)
+                pitch = random.uniform(0, 3.14)
+                yaw = random.uniform(0, 3.14)
+
+                # convert to quaternions
+                qx, qy, qz, qw = self.getQuaternionFromEuler(roll, pitch, yaw)
+                part_body.quat = [qx, qy, qz, qw]
+
+                # attach part to scene
+                part_attach = scene.attach(part)
+                part_attach.add("joint", type="free")
+
             vzAmp = (
                 np.sin(vibAngle) * A
             )  # the forward motion composant of the full motion
