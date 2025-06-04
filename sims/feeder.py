@@ -54,7 +54,6 @@ class MjSim(BaseSim):
 
             # convert to quaternions
             qx, qy, qz, qw = self.getQuaternionFromEuler(roll, pitch, yaw)
-            qx, qy, qz, qw = self.getQuaternionFromEuler(0, 0, 0)
             part_body.quat = [qx, qy, qz, qw]
 
             # attach part to scene
@@ -74,7 +73,7 @@ class MjSim(BaseSim):
     def spin(self, ss: SimSync):  # defines the simulation stepping
         t = 0  # start time
         omega = 100  # vibration frequency
-        A = 0.000179  # vibration amplitude
+        A = 0.000279  # vibration amplitude
         vibAngle = 20 / 180 * np.pi  # vibration angle in radians
 
         dt = (
