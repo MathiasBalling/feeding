@@ -20,7 +20,7 @@ class MjSim(BaseSim):
         self.tasks = [self.spin]
 
     def init(self):
-        # root
+        # roott
         _MJ_SIM = Path(__file__).parent.parent
 
         # basic scene path
