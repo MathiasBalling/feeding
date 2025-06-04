@@ -38,14 +38,14 @@ class MjSim(BaseSim):
         scene.attach(feeder)
 
         # add the parts to the xml scene file
-        numberOfParts = 1
+        numberOfParts = 5
         for i in range(numberOfParts):
             _XML_PART = Path(_MJ_SIM / "assets/props/part.xml")
             part = mjcf.from_path(_XML_PART)
 
             ssd = 0.05  # spawn seperation distance, MODIFY IF NEEDED
             part_body = part.worldbody.find("body", "part")
-            part_body.pos = [0.02, 0.05, 0.17]
+            part_body.pos = [0.02, 0.05 + i * 0.1, 0.17]
 
             # random RPY initializing of the part, MODIFY IF NEEDED
             roll = random.uniform(0, 3.14)

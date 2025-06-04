@@ -12,7 +12,7 @@
 
 
     <asset>
-        <mesh name="feeder" file="custom_feeder_slope.stl" scale="0.001 0.001 0.001" inertia="exact">
+        <mesh name="feeder" file="custom_feeder_final.stl" scale="0.001 0.001 0.001" inertia="exact">
             <plugin instance="sdf" />
         </mesh>
     </asset>
