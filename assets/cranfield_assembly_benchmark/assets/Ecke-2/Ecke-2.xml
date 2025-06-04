@@ -1,0 +1,17 @@
+<mujoco model="Ecke-2">
+  <asset>
+    <mesh
+      file="../../../../../assets/cranfield_assembly_benchmark/assets/Ecke-2/Ecke-2.obj"
+      scale="0.001 0.001 0.001">
+      <plugin instance="sdf" />
+    </mesh>
+  </asset>
+  <worldbody>
+    <body name="Ecke-2" pos="2 2 2">
+      <freejoint />
+      <geom type="mesh" mesh="Ecke-2" size="0.01">
+        <plugin instance="sdf" />
+      </geom>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,86 @@
+
+<mujocoinclude>
+
+
+	<asset>
+		<mesh name="board"           file="../assets/rgmc_practice_task_board_2020/assets/IROS2020_Practice - IROS2020_Practice_Base-1.STL" scale="0.001 0.001 0.001" />
+		<mesh name="cable_routing_1" file="../assets/rgmc_practice_task_board_2020/assets/IROS2020_Practice - Cable Routing Base-1.STL" scale="0.001 0.001 0.001" />
+		<mesh name="cable_routing_2" file="../assets/rgmc_practice_task_board_2020/assets/IROS2020_Practice - Cable Routing Base-2.STL" scale="0.001 0.001 0.001" />
+		<mesh name="usb_clamp"       file="../assets/rgmc_practice_task_board_2020/assets/IROS2020_Practice - USB Cable Clamp-1.STL" scale="0.001 0.001 0.001" />
+		<mesh name="usb_socket"      file="../assets/rgmc_practice_task_board_2020/assets/IROS2020_Practice - U09-AF-AF-B_USB_Socket-1.STL"/>
+		<mesh name="wire_bolt_1"     file="../assets/rgmc_practice_task_board_2020/assets/IROS2020_Practice - bolt for flat cable-1.STL" scale="0.001 0.001 0.001" />
+		<mesh name="wire_bolt_2"     file="../assets/rgmc_practice_task_board_2020/assets/IROS2020_Practice - bolt for flat cable-2.STL" scale="0.001 0.001 0.001" />
+		<mesh name="wire_washer_1"   file="../assets/rgmc_practice_task_board_2020/assets/IROS2020_Practice - Washer for wire hook-1.STL" scale="0.001 0.001 0.001" />
+		<mesh name="wire_washer_2"   file="../assets/rgmc_practice_task_board_2020/assets/IROS2020_Practice - Washer for wire hook-2.STL" scale="0.001 0.001 0.001" />
+
+	</asset>
+	<worldbody>
+
+		
+		<body name="usb_clamp" >
+			<geom name="usb_clamp" type="mesh" pos="0 0 0.2" mesh="usb_clamp" mass="0.2" />
+			<!-- <geom name="usb_clamp" pos="0.8752  0.2716  0.08658 " type="mesh" mesh="usb_clamp" mass="0.2" /> -->
+		</body>
+		<body name="task-board" pos="0.70162832 0.63506023 0.05866477" quat="0.7071 0 0 -0.7071">
+			<!-- <body name="usb-socket">
+				<geom mesh="usb-socket" class="visual"/>
+				<geom mesh="usb-socket" class="collision"/>
+			</body> -->
+			<!-- <body name="usb_clamp" pos="0 0 0">
+				<geom name="usb_clamp"                                                    type="mesh" mesh="usb_clamp" mass="0.2"/>
+			</body> -->
+			<!-- <body name="usb_clamp">
+				<geom name="usb_clamp"                                                    type="mesh" mesh="usb_clamp" mass="0.2"/>
+			</body> -->
+			<geom name="usb_socket"                                                   type="mesh" mesh="usb_socket" mass="0.2"/>
+			<geom name="board"                                                        type="mesh" mesh="board" mass="0.2"/>
+
+			<!-- <geom name="wire_bolt_1"    type="mesh" mesh="wire_bolt_1" mass="2" pos="-0.16117015  0.00887994 0"/>
+			<geom name="wire_bolt_2"    type="mesh" mesh="wire_bolt_2" mass="2" pos="0.00259497 -0.00292064 0"/>
+			<geom name="wire_bolt_3"    type="mesh" mesh="wire_bolt_2" mass="2" pos="-0.09874543  0.23148863 0"/> -->
+
+			<!-- <geom name="wire_bolt-1"   solref="0.001 5" solimp="0.1 0.1 0.001 0.5 2" type="mesh" mesh="wire_bolt_1" mass="2" pos="-0.16117015  0.00887994 0"/>
+			<geom name="wire_bolt-2"   solref="0.001 5" solimp="0.1 0.1 0.001 0.5 2" type="mesh" mesh="wire_bolt_2" mass="2" pos="0.00259497 -0.00292064 0"/>
+			<geom name="wire_bolt-3"   solref="0.001 5" solimp="0.1 0.1 0.001 0.5 2" type="mesh" mesh="wire_bolt_2" mass="2" pos="-0.09874543  0.23148863 0"/> -->
+			<!-- <geom name="wire_bolt-1"   solref="0.001 2" solimp="0.9 0.95 0.001 1 0.1" type="mesh" mesh="wire_bolt_1" mass="2" pos="-0.16117015  0.00887994 0"/>
+			<geom name="wire_bolt-2"   solref="0.001 2" solimp="0.9 0.95 0.001 1 0.1" type="mesh" mesh="wire_bolt_2" mass="2" pos="0.00259497 -0.00292064 0"/>
+			<geom name="wire_bolt-3"   solref="0.001 2" solimp="0.9 0.95 0.001 1 0.1" type="mesh" mesh="wire_bolt_2" mass="2" pos="-0.09874543  0.23148863 0"/> -->
+
+
+			<!-- <geom name="wire_washer_1" solref="0.001 2" solimp="0.9 0.95 0.001 1 0.1" type="mesh" mesh="wire_washer_1" mass="2" pos="-0.16117015  0.00887994 0"/>
+			<geom name="wire_washer_2" solref="0.001 2" solimp="0.9 0.95 0.001 1 0.1" type="mesh" mesh="wire_washer_2" mass="2" pos="0.00259497 -0.00292064 0"/>
+			<geom name="wire_washer_3" solref="0.001 2" solimp="0.9 0.95 0.001 1 0.1" type="mesh" mesh="wire_washer_2" mass="2" pos="-0.09874543  0.23148863 0"/> -->
+			
+			</body>
+
+			<geom name="wire_bolt_3" solref="0.00001 1" solimp="0.9 0.95 0.001 1 0.1" type="cylinder"
+				size="0.008 0.02" mass="2" pos="0.98311695 0.39026566 0.1" />
+
+			<geom name="wire_bolt_2" solref="0.000001 1" solimp="0.9 0.95 0.001 1 0.1" type="cylinder"
+				size="0.008 0.02" mass="2" pos="0.8 0.32 0.1" />
+		<!-- <geom name="wire_bolt_2" solref="0.000001 4" solimp="0.9 0.95 0.001 1 0.1" type="cylinder"
+				size="0.0075 0.02" mass="2" pos="0.74870768 0.28892526 0.1" /> -->
+			
+				<geom name="wire_bolt_1" solref="0.000001 1" solimp="0.9 0.95 0.001 1 0.1" type="cylinder"
+				size="0.008 0.02" mass="2" pos="0.83050826 0.48269038 0.1" />
+		<!-- <geom name="wire_bolt_3" solref="0.001 2" solimp="0.9 0.95 0.001 1 0.1" type="cylinder"
+				size="0.005 0.02" mass="2" pos="0.98311695 0.39026566 0.11779694" />
+			<geom name="wire_bolt_2" solref="0.001 2" solimp="0.9 0.95 0.001 1 0.1" type="cylinder"
+				size="0.005 0.02" mass="2" pos="0.74870768 0.28892526 0.11779694" />
+			<geom name="wire_bolt_1" solref="0.001 2" solimp="0.9 0.95 0.001 1 0.1" type="cylinder"
+				size="0.005 0.02" mass="2" pos="0.83050826 0.48269038 0.11779694" /> -->
+
+
+			<geom name="wire_washer_3" solref="0.000001 1" solimp="0.9 0.95 0.001 1 0.1" type="cylinder"
+				size="0.025 0.005" mass="2" pos="0.98311695 0.39026566 0.11779694" />
+
+			<geom name="wire_washer_2" solref="0.000001 1" solimp="0.9 0.95 0.001 1 0.1" type="cylinder"
+				size="0.025 0.005" mass="2" pos="0.8 0.32 0.11779694" />
+
+		<!-- <geom name="wire_washer_2" solref="0.000001 4" solimp="0.9 0.95 0.001 1 0.1" type="cylinder"
+				size="0.025 0.005" mass="2" pos="0.74870768 0.28892526 0.11779694" /> -->
+
+			<geom name="wire_washer_1" solref="0.000001 1" solimp="0.9 0.95 0.001 1 0.1" type="cylinder"
+				size="0.025 0.005" mass="2" pos="0.83050826 0.48269038 0.11779694" />
+	</worldbody>
+</mujocoinclude>

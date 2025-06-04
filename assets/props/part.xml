@@ -1,0 +1,36 @@
+<mujocoinclude>
+    <!-- <compiler angle="radian" meshdir="assets" autolimits="true" />
+
+    <extension>
+        <plugin plugin="mujoco.sdf.sdflib">
+            <instance name="sdf">
+                <config key="aabb" value="0" />
+            </instance>
+        </plugin>
+    </extension>
+
+    <asset>
+        <mesh name="part" file="dfBrassSeat.stl">
+            <plugin instance="sdf" />
+        </mesh>
+    </asset> -->
+
+
+	<worldbody>
+		<body name="part">
+			<!-- "Part 1, L-shape - comment in both lines below to experiment with this part ""-->
+            <geom name="box" mass="0.005" type="box" size="0.01 0.01 0.005"  rgba="0.2 0.2 0.2 1"  pos="0 0 0.0" friction="0.1 0.005 0.0001" condim="6" priority="1" solref ="0.000001 1.0" solimp=".95 .99 .0001 1" /> 
+			<geom name="box1" mass="0.005" type="box" size="0.01 0.005 0.005"  rgba="0.2 0.2 0.2 1"  pos="0 -0.005 0.01" friction="0.1 0.005 0.0001" condim="6" priority="1" solref ="0.000001 1.0" solimp=".95 .99 .0001 1" /> 
+
+			<!-- "Part 2, bolt - comment in both lines below to experiment with this part ""-->
+			<!-- <geom name="bolt_head" mass="0.005" type="cylinder" size="0.005 0.001"  rgba="0.2 0.2 0.2 1"  pos="0 0 0.0" friction="0.15 0.005 0.0001" condim="6" priority="1" solref ="0.000001 1.0" solimp=".95 .99 .0001 1" />  -->
+			<!-- <geom name="bold_body"  mass="0.005" type="cylinder" size="0.0015 0.01"   rgba="0.2 0.2 0.2 1"  pos="0 0 0.01" friction="0.15 0.005 0.0001" condim="6" priority="1" solref = "0.000001 1.0" solimp=".95 .99 .0001 1"/>  -->
+                     
+            <!-- <geom name="part_geom" type="sdf" mesh="part" mass="0.006" friction="0.15 0.0005 0.00001" condim="6" priority="1" solref = "0.0000000000001 1.0">
+                <plugin instance="sdf" />
+            </geom> -->
+        </body>
+
+	</worldbody>
+
+</mujocoinclude>

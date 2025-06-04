@@ -1,0 +1,50 @@
+
+<mujoco model="task_board">
+
+	<compiler angle="radian" meshdir="assets" autolimits="true" />
+
+	<asset>
+		<mesh name="board"           file="IROS2020_Practice - IROS2020_Practice_Base-1.STL" scale="0.001 0.001 0.001" />
+		<mesh name="cable_routing_1" file="IROS2020_Practice - Cable Routing Base-1.STL" scale="0.001 0.001 0.001" />
+		<mesh name="cable_routing_2" file="IROS2020_Practice - Cable Routing Base-2.STL" scale="0.001 0.001 0.001" />
+		<mesh name="usb_clamp"       file="IROS2020_Practice - USB Cable Clamp-1.STL" scale="0.001 0.001 0.001" />
+		<mesh name="usb_socket"      file="IROS2020_Practice - U09-AF-AF-B_USB_Socket-1.STL"/>
+		<mesh name="wire_bolt_1"     file="IROS2020_Practice - bolt for flat cable-1.STL" scale="0.001 0.001 0.001" />
+		<mesh name="wire_bolt_2"     file="IROS2020_Practice - bolt for flat cable-2.STL" scale="0.001 0.001 0.001" />
+		<mesh name="wire_washer_1"   file="IROS2020_Practice - Washer for wire hook-1.STL" scale="0.001 0.001 0.001" />
+		<mesh name="wire_washer_2"   file="IROS2020_Practice - Washer for wire hook-2.STL" scale="0.001 0.001 0.001" />
+
+	</asset>
+	<worldbody>
+
+		
+		<body name="task_board" pos="0.70162832 0.63506023 0.05866477" quat="0.7071 0 0 -0.7071">
+			<!-- <body name="usb_clamp" >
+				<geom name="usb_clamp" type="mesh" pos="0 0 0" mesh="usb_clamp" mass="0.2" />
+			</body> -->
+			
+			<!-- <geom name="usb_socket"                                                   type="mesh" mesh="usb_socket" mass="0.2"/> -->
+			<!-- <geom name="board2"                                                        type="mesh" mesh="board" mass="0.2"/> -->
+
+		</body>
+		<geom name="board" type="box" size="0.2 0.2 0.01" pos="0.68634715 0.43506023 0.06866477" />
+
+		<geom name="wire_bolt_3" solref="0.00001 1" solimp="0.9 0.95 0.001 1 0.1" type="box"
+			size="0.01 0.01 0.02" mass="2" pos="0.98311695 0.39026566 0.1" />
+
+		<geom name="wire_bolt_2" solref="0.000001 1" solimp="0.9 0.95 0.001 1 0.1" type="box"
+		size="0.01 0.01  0.02" mass="2" pos="0.83 0.49 0.1" />
+		
+		<geom name="wire_bolt_1" solref="0.000001 1" solimp="0.9 0.95 0.001 1 0.1" type="box"
+		size="0.01 0.01 0.02" mass="2" pos="1.05 0.6 0.1" />
+
+		<geom name="wire_washer_3" solref="0.000001 1" solimp="0.9 0.95 0.001 1 0.1" type="box"
+		size="0.025 0.025 0.01" mass="2" pos="0.98311695 0.39026566 0.11779694" />
+
+		<geom name="wire_washer_2" solref="0.000001 1" solimp="0.9 0.95 0.001 1 0.1" type="box"
+		size="0.025 0.025 0.01" mass="2" pos="0.83 0.49 0.11779694" />
+
+		<geom name="wire_washer_1" solref="0.000001 1" solimp="0.9 0.95 0.001 1 0.1" type="box"
+		size="0.025 0.025 0.01" mass="2" pos="1.05 0.6 0.11779694" />
+	</worldbody>
+</mujoco>

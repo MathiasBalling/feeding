@@ -1,0 +1,45 @@
+[project]
+name = "mj_sim"
+version = "1.1.0"
+description = "A repository to demonstrate, implement, test and learn control in MuJoCo."
+authors = [
+  { name = "Victor Melbye Staven", email = "victorstaven@protonmail.com" },
+]
+requires-python = ">=3.10,<4.0"
+license = "MIT"
+dependencies = [
+  "mujoco>=3.2.0,<4",
+  "numpy>=1.26.0,<1.27.0",
+  "numpy_quaternion==2023.0.3",
+  "pytest==8.3.2",
+  "pdoc==14.6.1",
+  "open3d-python==0.3.0.0",
+  "open3d==0.19.0",
+  "opencv-python>=4.9.0.80,<4.10.0.84",
+  "spatialmath-python==1.1.9",
+  "glfw==2.7.0",
+  "pandas==2.2.2",
+  "pybind11-stubgen>=2.5.1",
+  "lark==1.2.2",
+  "dm_control==1.0.26",
+]
+
+# [dependency-groups]
+# learning = [
+#     "tyro>=0.9.2",
+#     "wandb[media]>=0.16.6",
+#     "mujoco-mjx>=3.2.6",
+#     "brax>=0.11.0",
+#     "jax[cuda12]>=0.4.35",
+#     "mediapy>=1.2.2",
+#     "jaxlie==1.4.2",
+# ]
+# real = ["ur_rtde==1.5.9"]
+
+[tool.uv]
+package = false
+# default-groups = ["learning", "real"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

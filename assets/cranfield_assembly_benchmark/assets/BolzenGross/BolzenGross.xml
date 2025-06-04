@@ -1,0 +1,16 @@
+<mujoco model="BolzenGross">
+  <asset>
+    <mesh file="../../../../../assets/cranfield_assembly_benchmark/assets/BolzenGross/BolzenGross.stl" scale="0.001 0.001 0.001" >
+      <plugin instance="sdf" />
+    </mesh>
+  </asset>
+  <worldbody>
+    <body name="BolzenGross" pos="2 2 2">
+      <freejoint/>
+      <geom type="mesh" mesh="BolzenGross"> 
+      <!-- <geom type="mesh" mesh="BolzenGross" size="0.01">  -->
+        <plugin instance="sdf" />  
+      </geom>
+    </body>
+  </worldbody>
+</mujoco>

@@ -1,0 +1,17 @@
+<mujoco model="Brecke-1">
+  <asset>
+    <mesh
+      file="../../../../../assets/cranfield_assembly_benchmark/assets/Brecke-1/Brecke-1.obj"
+      scale="0.001 0.001 0.001">
+      <plugin instance="sdf" />
+    </mesh>
+  </asset>
+  <worldbody>
+    <body name="Brecke-1" pos="2 2 2">
+      <freejoint />
+      <geom type="mesh" mesh="Brecke-1" size="0.01">
+        <plugin instance="sdf" />
+      </geom>
+    </body>
+  </worldbody>
+</mujoco>

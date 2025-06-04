@@ -1,0 +1,17 @@
+<mujoco model="BolzenKlein-2">
+  <asset>
+    <mesh
+      file="../../../../../assets/cranfield_assembly_benchmark/assets/BolzenKlein-2/BolzenKlein-2.obj"
+      scale="0.001 0.001 0.001">
+      <plugin instance="sdf" />
+    </mesh>
+  </asset>
+  <worldbody>
+    <body name="BolzenKlein-2" pos="2 2 2">
+      <freejoint />
+      <geom type="mesh" mesh="BolzenKlein-2" size="0.01">
+        <plugin instance="sdf" />
+      </geom>
+    </body>
+  </worldbody>
+</mujoco>
