@@ -2,6 +2,9 @@
 
 ## Setup
 
+This project uses uv for dependency management and virtual environments.
+To get started, create a virtual environment and install dependencies:
+
 ```bash
 uv venv
 uv sync
