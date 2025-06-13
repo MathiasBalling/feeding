@@ -1,55 +1,55 @@
 <mujoco model="feeder">
-    <option timestep="0.0005" />
-    <compiler angle="radian" meshdir="assets" autolimits="true" />
+  <option timestep="0.0005" />
+  <compiler angle="radian" meshdir="assets" autolimits="true" />
 
-    <extension>
-        <plugin plugin="mujoco.sdf.sdflib">
-            <instance name="sdf">
-                <config key="aabb" value="0" />
-            </instance>
-        </plugin>
-    </extension>
-
-
-    <asset>
-        <mesh name="feeder" file="custom_feeder_final.stl" scale="0.001 0.001 0.001" inertia="exact">
-            <plugin instance="sdf" />
-        </mesh>
-    </asset>
+  <extension>
+    <plugin plugin="mujoco.sdf.sdflib">
+      <instance name="sdf">
+        <config key="aabb" value="0" />
+      </instance>
+    </plugin>
+  </extension>
 
 
-
-
-    <worldbody>
-        <body name="feeder">
-            <!--<site name="hole" pos="0.075 -0.075 0" rgba="0 0 0 0.1" />-->
-
-            <geom name="feeder_geom" type="sdf" mesh="feeder"  friction="0.15 0.005 0.0001" priority="1" solref ="0.001 1.0" >
-                <plugin instance="sdf" />
-            </geom>
-
-
-            <joint name="x" type="slide" axis="1 0 0"/>
-            <joint name="y" type="slide" axis="0 1 0"/>
-            <joint name="z" type="slide" axis="0 0 1"/>
-
-            <joint name="R" type="hinge" axis="0 0 1"/>
-            <joint name="P" type="hinge" axis="0 1 0"/>
-            <joint name="Y" type="hinge" axis="1 0 0"/>
+  <asset>
+    <mesh name="feeder" file="Feeding v5.stl" scale="0.001 0.001 0.001">
+      <plugin instance="sdf" />
+    </mesh>
+  </asset>
 
 
 
-        </body>
-    </worldbody>
 
-    <actuator>
-        <position name="x" kp="500000" kv="100" joint="x" ctrlrange="-0.01 0.01" />
-        <position name="y" kp="500000" kv="100" joint="y" ctrlrange="-0.01 0.01" />
-        <position name="z" kp="500000" kv="100" joint="z" ctrlrange="-0.01 0.01" />
+  <worldbody>
+    <body name="feeder">
+      <!--<site name="hole" pos="0.075 -0.075 0" rgba="0 0 0 0.1" />-->
 
-        <position name="R" kp="10000" kv="100" joint="R" ctrlrange="-0.0 0.0" />
-        <position name="P" kp="10000" kv="100" joint="P" ctrlrange="0 0" />
-        <position name="Y" kp="10000" kv="100" joint="Y" ctrlrange="0 0" />
-    </actuator>
+      <geom name="feeder_geom" type="sdf" mesh="feeder"  friction="1.0 0.005 0.0001" priority="1" solref ="0.001 1.0" >
+        <plugin instance="sdf" />
+      </geom>
+
+
+      <joint name="x" type="slide" axis="1 0 0"/>
+      <joint name="y" type="slide" axis="0 1 0"/>
+      <joint name="z" type="slide" axis="0 0 1"/>
+
+      <joint name="R" type="hinge" axis="0 0 1"/>
+      <joint name="P" type="hinge" axis="0 1 0"/>
+      <joint name="Y" type="hinge" axis="1 0 0"/>
+
+
+
+    </body>
+  </worldbody>
+
+  <actuator>
+    <position name="x" kp="500000" kv="100" joint="x" ctrlrange="-0.01 0.01" />
+    <position name="y" kp="500000" kv="100" joint="y" ctrlrange="-0.01 0.01" />
+    <position name="z" kp="500000" kv="100" joint="z" ctrlrange="-0.01 0.01" />
+
+    <position name="R" kp="10000" kv="100" joint="R" ctrlrange="-0.0 0.0" />
+    <position name="P" kp="10000" kv="100" joint="P" ctrlrange="0 0" />
+    <position name="Y" kp="10000" kv="100" joint="Y" ctrlrange="0 0" />
+  </actuator>
 
 </mujoco>

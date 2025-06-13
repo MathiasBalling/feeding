@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import sys
 import glfw
 import mujoco as mj
 from dm_control import mjcf
@@ -15,6 +16,8 @@ import random
 class MjSim(BaseSim):
     def __init__(self):
         super().__init__()
+        self.vibration_angle = 130
+        self.vibration_amplitude = 0.000300
 
         self._model, self._data = self.init()
         self.tasks = [self.spin]
@@ -45,7 +48,7 @@ class MjSim(BaseSim):
 
             ssd = 0.05  # spawn seperation distance, MODIFY IF NEEDED
             part_body = part.worldbody.find("body", "part")
-            part_body.pos = [0.02, -0.2 + i * 0.1, 0.17]
+            part_body.pos = [0.1 + 0.1 * i, 0.05, 0.17]
 
             # random RPY initializing of the part, MODIFY IF NEEDED
             roll = random.uniform(0, 3.14)
@@ -73,14 +76,15 @@ class MjSim(BaseSim):
     def spin(self, ss: SimSync):  # defines the simulation stepping
         t = 0  # start time
         omega = 100  # vibration frequency
-        A = 0.000279  # vibration amplitude
-        vibAngle = 20 / 180 * np.pi  # vibration angle in radians
 
         dt = (
             self.model.opt.timestep * 4
         )  # set time step of the simulation for computation of next vibrations position (handled by controller)
 
         while self._runSim:
+            A = self.vibration_amplitude  # vibration amplitude
+            vibAngle = self.vibration_angle / 180 * np.pi  # vibration angle in radians
+
             vzAmp = (
                 np.sin(vibAngle) * A
             )  # the forward motion composant of the full motion
@@ -90,11 +94,8 @@ class MjSim(BaseSim):
 
             dz = vzAmp * np.sin(omega * t)
             dx = vxAmp * np.sin(omega * t)
-            self.data.actuator("feeder/y").ctrl = dx
+            self.data.actuator("feeder/x").ctrl = dx
             self.data.actuator("feeder/z").ctrl = dz
-
-            # print(self.data.joint("feeder/x").qpos)
-            # print(self.data.joint("feeder/z").qpos)
 
             ss.step()
             t += dt
@@ -110,10 +111,25 @@ class MjSim(BaseSim):
     def keyboard_callback(self, key: int):
         if key is glfw.KEY_SPACE:
             self._runSim = False
-            print("You pressed space and can now quit")
+            print("Simulation stopped")
         if key is glfw.KEY_R:
             mj.mj_resetData(self.model, self.data)
-            # pass  # TODO: reset function not yet implemented
+            mj._structs
+        if key is glfw.KEY_J:
+            self.vibration_amplitude -= 0.00001
+            print("Amplitude: " + str(self.vibration_amplitude))
+        if key is glfw.KEY_K:
+            self.vibration_amplitude += 0.00001
+            print("Amplitude: " + str(self.vibration_amplitude))
+        if key is glfw.KEY_H:
+            self.vibration_angle -= 10
+            print("Angle: " + str(self.vibration_angle))
+        if key is glfw.KEY_L:
+            self.vibration_angle += 10
+            print("Angle: " + str(self.vibration_angle))
+        if key is glfw.KEY_Q:
+            self._runSim = False
+            sys.exit()
 
     def getQuaternionFromEuler(self, roll, pitch, yaw):
         qx = np.sin(roll / 2) * np.cos(pitch / 2) * np.cos(yaw / 2) - np.cos(
