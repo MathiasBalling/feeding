@@ -27,7 +27,7 @@
     <body name="feeder">
       <!--<site name="hole" pos="0.075 -0.075 0" rgba="0 0 0 0.1" />-->
 
-      <geom name="feeder_geom" type="sdf" mesh="feeder"  friction="1.0 0.005 0.0001" priority="1" solref ="0.001 1.0" >
+      <geom name="feeder_geom" type="sdf" mesh="feeder"  friction="0.2 0.005 0.0001" priority="1" solref ="0.001 1.0" >
         <plugin instance="sdf" />
       </geom>
 
