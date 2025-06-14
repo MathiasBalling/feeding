@@ -17,7 +17,7 @@ class MjSim(BaseSim):
     def __init__(self):
         super().__init__()
         self.vibration_angle = 20
-        self.vibration_amplitude = 0.000300
+        self.vibration_amplitude = 0.000200
         self.vibration_frequency = 100
 
         self._model, self._data = self.init()
