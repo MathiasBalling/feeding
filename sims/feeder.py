@@ -16,8 +16,9 @@ import random
 class MjSim(BaseSim):
     def __init__(self):
         super().__init__()
-        self.vibration_angle = 130
+        self.vibration_angle = 20
         self.vibration_amplitude = 0.000300
+        self.vibration_frequency = 100
 
         self._model, self._data = self.init()
         self.tasks = [self.spin]
@@ -41,14 +42,14 @@ class MjSim(BaseSim):
         scene.attach(feeder)
 
         # add the parts to the xml scene file
-        numberOfParts = 4
+        numberOfParts = 2
         for i in range(numberOfParts):
             _XML_PART = Path(_MJ_SIM / "assets/props/part.xml")
             part = mjcf.from_path(_XML_PART)
 
             ssd = 0.05  # spawn seperation distance, MODIFY IF NEEDED
             part_body = part.worldbody.find("body", "part")
-            part_body.pos = [0.1 + 0.1 * i, 0.05, 0.17]
+            part_body.pos = [-0.7 + 0.1 * i, -0.025, 0.17]
 
             # random RPY initializing of the part, MODIFY IF NEEDED
             roll = random.uniform(0, 3.14)
@@ -75,13 +76,13 @@ class MjSim(BaseSim):
 
     def spin(self, ss: SimSync):  # defines the simulation stepping
         t = 0  # start time
-        omega = 100  # vibration frequency
 
         dt = (
             self.model.opt.timestep * 4
         )  # set time step of the simulation for computation of next vibrations position (handled by controller)
 
         while self._runSim:
+            omega = self.vibration_frequency  # vibration frequency
             A = self.vibration_amplitude  # vibration amplitude
             vibAngle = self.vibration_angle / 180 * np.pi  # vibration angle in radians
 

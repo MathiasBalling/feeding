@@ -15,6 +15,9 @@
     <mesh name="feeder" file="Feeding v5.stl" scale="0.001 0.001 0.001">
       <plugin instance="sdf" />
     </mesh>
+    <!-- <mesh name="feeder" file="custom_feeder.stl" scale="0.001 0.001 0.001"> -->
+    <!--   <plugin instance="sdf" /> -->
+    <!-- </mesh> -->
   </asset>
 
 
