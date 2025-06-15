@@ -12,7 +12,7 @@
 
 
   <asset>
-    <mesh name="feeder" file="Feeding v7.stl" scale="0.001 0.001 0.001">
+    <mesh name="feeder" file="Feeding v10.stl" scale="0.001 0.001 0.001">
       <plugin instance="sdf" />
     </mesh>
     <!-- <mesh name="feeder" file="custom_feeder.stl" scale="0.001 0.001 0.001"> -->

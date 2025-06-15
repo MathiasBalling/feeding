@@ -42,19 +42,43 @@ class MjSim(BaseSim):
         scene.attach(feeder)
 
         # add the parts to the xml scene file
-        numberOfParts = 2
-        for i in range(numberOfParts):
+        poses = [
+            {"x": -0.7, "y": -0.025, "z": 0.17, "roll": 0, "pitch": 0, "yaw": 0},
+            {"x": -0.7, "y": -0.025, "z": 0.27, "roll": 0, "pitch": 0, "yaw": 0},
+            {"x": -0.7, "y": -0.025, "z": 0.37, "roll": 0, "pitch": 0, "yaw": 0},
+            {"x": -0.3, "y": -0.025, "z": 0.17, "roll": 0, "pitch": 0, "yaw": 0},
+            {
+                "x": -0.2,
+                "y": -0.025,
+                "z": 0.17,
+                "roll": -np.pi / 2,
+                "pitch": 0,
+                "yaw": 0,
+            },
+        ]
+
+        for pose in poses:
             _XML_PART = Path(_MJ_SIM / "assets/props/part.xml")
             part = mjcf.from_path(_XML_PART)
 
-            ssd = 0.05  # spawn seperation distance, MODIFY IF NEEDED
             part_body = part.worldbody.find("body", "part")
-            part_body.pos = [-0.7 + 0.1 * i, -0.025, 0.17]
+            part_body.pos = [pose["x"], pose["y"], pose["z"]]
 
             # random RPY initializing of the part, MODIFY IF NEEDED
-            roll = random.uniform(0, 3.14)
-            pitch = random.uniform(0, 3.14)
-            yaw = random.uniform(0, 3.14)
+            if pose["roll"] is not None:
+                roll = pose["roll"]
+            else:
+                roll = random.uniform(0, 3.14)
+
+            if pose["pitch"] is not None:
+                pitch = pose["pitch"]
+            else:
+                pitch = random.uniform(0, 3.14)
+
+            if pose["yaw"] is not None:
+                yaw = pose["yaw"]
+            else:
+                yaw = random.uniform(0, 3.14)
 
             # convert to quaternions
             qx, qy, qz, qw = self.getQuaternionFromEuler(roll, pitch, yaw)
